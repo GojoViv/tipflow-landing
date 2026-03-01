@@ -139,27 +139,45 @@
 
     /* ── MOBILE ── */
     @media (max-width: 600px) {
-      .hero { padding: 96px 18px 56px; }
+      .hero { padding: 88px 18px 52px; min-height: auto !important; }
       .hero-stats { grid-template-columns: 1fr !important; }
       .wrap { padding: 0 18px; }
-      section[id], section:not(nav) { padding-top: 64px !important; padding-bottom: 64px !important; padding-left: 18px !important; padding-right: 18px !important; }
-      .feat-grid { border-radius: 14px; }
+      section[id], section:not(nav) { padding-top: 60px !important; padding-bottom: 60px !important; padding-left: 18px !important; padding-right: 18px !important; }
+      /* Hero CTA buttons — stack full-width */
+      .fa4[style] { display: flex !important; flex-direction: column !important; align-items: stretch !important; width: 100% !important; max-width: 320px !important; margin-left: auto !important; margin-right: auto !important; gap: 10px !important; }
+      .fa4 .btn-primary, .fa4 .btn-secondary { width: 100% !important; justify-content: center !important; text-align: center !important; box-sizing: border-box !important; }
+      /* Feature grid — single column */
+      .feat-grid { grid-template-columns: 1fr !important; border-radius: 14px; }
+      .feat-cell { padding: 28px 22px !important; }
+      /* Plan cards */
       .plan-card { padding: 28px 22px; }
+      /* Pricing grid */
+      .plan-grid { grid-template-columns: 1fr !important; }
       .quote-card { padding: 24px 20px; }
+      /* Testimonials */
+      .quotes-grid { grid-template-columns: 1fr !important; }
       .ticker-item { padding: 0 20px; font-size: 0.72rem; }
       .btn-primary, .btn-secondary { padding: 13px 22px; font-size: 0.88rem; }
       .eyebrow { font-size: 0.65rem; }
       .logo-text { font-size: 0.95rem; }
       .hero h1 { font-size: 2.4rem !important; }
       .staff-grid { grid-template-columns: 1fr !important; }
+      /* Staff phone mockup */
+      .staff-grid img, .staff-grid .phone-mockup { max-width: 240px !important; margin: 0 auto !important; }
       .problem-grid { gap: 40px !important; }
       nav .nav-inner { padding: 0 16px !important; height: 56px !important; }
+      .nav-links { display: none !important; }
       .btn-nav { font-size: 0.78rem !important; padding: 8px 14px !important; }
       footer .wrap { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+      /* Contact form inputs */
+      #contact input, #contact select, #contact textarea { width: 100% !important; box-sizing: border-box !important; }
+      h2 { font-size: 2rem !important; }
+      h3 { font-size: 1.3rem !important; }
     }
     @media (max-width: 400px) {
-      .hero h1 { font-size: 2rem !important; }
+      .hero h1 { font-size: 1.9rem !important; }
       .btn-primary, .btn-secondary { padding: 12px 18px !important; font-size: 0.82rem !important; }
+      h2 { font-size: 1.7rem !important; }
     }
   </style>
 </head>
