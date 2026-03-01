@@ -135,6 +135,21 @@
     /* ── SCROLL ANIM ── */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 96px 18px 56px; }
+      .hero-stats { grid-template-columns: 1fr !important; }
+      .wrap { padding: 0 18px; }
+      section[id], section:not(nav) { padding-top: 64px !important; padding-bottom: 64px !important; padding-left: 18px !important; padding-right: 18px !important; }
+      .feat-grid { border-radius: 14px; }
+      .plan-card { padding: 28px 22px; }
+      .quote-card { padding: 24px 20px; }
+      .ticker-item { padding: 0 20px; font-size: 0.72rem; }
+      .btn-primary, .btn-secondary { padding: 13px 22px; font-size: 0.88rem; }
+      .eyebrow { font-size: 0.65rem; }
+      .logo-text { font-size: 0.95rem; }
+    }
   </style>
 </head>
 <body>
