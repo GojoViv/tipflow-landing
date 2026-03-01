@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TipFlow — Digital Tipping for Your Venue</title>
+  <title>TipKing — Digital Tipping for Eastern Europe</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-family: 'Inter', sans-serif; background: #050810; color: #cbd5e1; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    html { font-family: 'Inter', sans-serif; background: #080E18; color: #F5EFE0; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
     body { overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
 
@@ -23,18 +23,18 @@
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(5,8,16,0.8); backdrop-filter: blur(20px) saturate(150%);
+      background: rgba(8,14,24,0.85); backdrop-filter: blur(20px) saturate(150%);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 28px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
     .logo { display: flex; align-items: center; gap: 10px; }
-    .logo-mark { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg, #2563eb, #7c3aed); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 24px rgba(37,99,235,0.45); }
-    .logo-text { font-weight: 800; font-size: 1.05rem; color: #f8fafc; letter-spacing: -0.025em; }
+    .logo-mark { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg, #C9A44C, #8A6820); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 24px rgba(201,164,76,0.35); }
+    .logo-text { font-weight: 800; font-size: 1.05rem; color: #F5EFE0; letter-spacing: -0.025em; }
     .nav-links { display: none; gap: 32px; }
-    .nav-links a { font-size: 0.83rem; color: #64748b; transition: color 0.2s; }
-    .nav-links a:hover { color: #e2e8f0; }
+    .nav-links a { font-size: 0.83rem; color: #8A7A60; transition: color 0.2s; }
+    .nav-links a:hover { color: #F5EFE0; }
     @media(min-width:820px) { .nav-links { display: flex; } }
-    .btn-nav { padding: 9px 20px; border-radius: 9px; background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; font-size: 0.83rem; font-weight: 700; transition: opacity 0.2s, transform 0.2s; box-shadow: 0 4px 20px rgba(37,99,235,0.3); }
+    .btn-nav { padding: 9px 20px; border-radius: 9px; background: linear-gradient(135deg, #C9A44C, #A07830); color: #fff; font-size: 0.83rem; font-weight: 700; transition: opacity 0.2s, transform 0.2s; box-shadow: 0 4px 20px rgba(201,164,76,0.3); }
     .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
 
     /* ── CONTAINER ── */
@@ -44,31 +44,31 @@
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 15px 30px; border-radius: 11px;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      background: linear-gradient(135deg, #C9A44C, #A07830);
       color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em;
-      transition: all 0.2s; box-shadow: 0 6px 30px rgba(37,99,235,0.35);
+      transition: all 0.2s; box-shadow: 0 6px 30px rgba(201,164,76,0.3);
       position: relative; overflow: hidden;
     }
     .btn-primary::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent); pointer-events: none; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(37,99,235,0.45); }
-    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 15px 30px; border-radius: 11px; border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; font-weight: 600; font-size: 0.95rem; transition: all 0.2s; }
-    .btn-secondary:hover { border-color: rgba(255,255,255,0.2); color: #e2e8f0; background: rgba(255,255,255,0.04); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,164,76,0.45); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 15px 30px; border-radius: 11px; border: 1px solid rgba(201,164,76,0.25); color: #8A7A60; font-weight: 600; font-size: 0.95rem; transition: all 0.2s; }
+    .btn-secondary:hover { border-color: rgba(201,164,76,0.45); color: #F5EFE0; background: rgba(201,164,76,0.06); }
 
     /* ── EYEBROW ── */
-    .eyebrow { display: inline-flex; align-items: center; gap: 7px; padding: 5px 14px; border-radius: 999px; background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.22); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #93c5fd; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 7px; padding: 5px 14px; border-radius: 999px; background: rgba(201,164,76,0.1); border: 1px solid rgba(201,164,76,0.25); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #D4B48A; }
 
     /* ── GLASS ── */
     .glass { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; transition: all 0.25s; }
-    .glass:hover { background: rgba(255,255,255,0.04); border-color: rgba(59,130,246,0.22); }
+    .glass:hover { background: rgba(255,255,255,0.04); border-color: rgba(201,164,76,0.1); }
     .glass-static { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; }
 
     /* ── GRADIENTS ── */
-    .g-blue { background: linear-gradient(135deg,#93c5fd,#818cf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .g-gold { background: linear-gradient(135deg,#D4B48A,#C9A44C); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .g-warm { background: linear-gradient(135deg,#fbbf24,#f97316); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .g-green { background: linear-gradient(135deg,#34d399,#10b981); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
     /* ── HR ── */
-    .hr { height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent); }
+    .hr { height: 1px; background: linear-gradient(to right, transparent, rgba(201,164,76,0.12), transparent); }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
@@ -92,7 +92,7 @@
     .pulse-ring { animation: pulse 2.5s ease-in-out infinite; }
 
     .shimmer-h {
-      background: linear-gradient(90deg, #93c5fd 0%, #ffffff 35%, #c4b5fd 55%, #93c5fd 100%);
+      background: linear-gradient(90deg, #D4B48A 0%, #ffffff 35%, #C9A44C 55%, #D4B48A 100%);
       background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       animation: shimmer 4s linear infinite;
     }
@@ -101,9 +101,9 @@
     .hero {
       min-height: 100vh; display: flex; align-items: center; padding: 120px 28px 80px;
       background:
-        radial-gradient(ellipse 100% 70% at 50% -10%, rgba(29,78,216,0.3) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 40% at 10% 70%, rgba(124,58,237,0.1) 0%, transparent 60%),
-        #050810;
+        radial-gradient(ellipse 100% 70% at 50% -10%, rgba(180,140,60,0.25) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 10% 70%, rgba(201,164,76,0.06) 0%, transparent 60%),
+        #080E18;
       position: relative; overflow: hidden;
     }
     .hero-grid {
@@ -116,17 +116,17 @@
     /* ── TICKER ── */
     .ticker-wrap { overflow: hidden; padding: 18px 0; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
     .ticker-track { display: flex; width: max-content; animation: ticker 28s linear infinite; }
-    .ticker-item { padding: 0 40px; font-size: 0.78rem; font-weight: 600; color: #334155; white-space: nowrap; display: flex; align-items: center; gap: 10px; }
-    .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: #1d4ed8; }
+    .ticker-item { padding: 0 40px; font-size: 0.78rem; font-weight: 600; color: #8A7A60; white-space: nowrap; display: flex; align-items: center; gap: 10px; }
+    .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: #C9A44C; }
 
     /* ── PRICING ── */
     .plan-card { border-radius: 20px; padding: 36px; position: relative; }
-    .plan-popular { background: linear-gradient(135deg, rgba(37,99,235,0.14), rgba(124,58,237,0.1)); border: 1px solid rgba(37,99,235,0.35); box-shadow: 0 0 60px rgba(37,99,235,0.12); }
+    .plan-popular { background: rgba(201,164,76,0.08); border: 1px solid rgba(201,164,76,0.4); box-shadow: 0 0 60px rgba(201,164,76,0.1); }
     .plan-basic { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); }
 
     /* ── FEATURE GRID ── */
     .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2px; border-radius: 20px; overflow: hidden; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
-    .feat-cell { background: #050810; padding: 36px 32px; }
+    .feat-cell { background: #080E18; padding: 36px 32px; }
     .feat-cell:hover { background: rgba(255,255,255,0.015); }
 
     /* ── QUOTE ── */
@@ -159,7 +159,13 @@
   <div class="nav-inner">
     <div class="logo">
       <div class="logo-mark">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="white" stroke-width="2.2" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="white" stroke-width="2.2" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="white" stroke-width="2.2" stroke-linejoin="round"/></svg>
+        <svg width="20" height="20" viewBox="0 0 40 40" fill="none">
+          <path d="M6 28 L6 14 L13 20 L20 8 L27 20 L34 14 L34 28 Z" fill="#C9A44C"/>
+          <rect x="17" y="28" width="6" height="8" rx="1" fill="#C9A44C"/>
+          <circle cx="6" cy="13" r="2.5" fill="#C9A44C"/>
+          <circle cx="34" cy="13" r="2.5" fill="#C9A44C"/>
+          <circle cx="20" cy="7" r="2.5" fill="#C9A44C"/>
+        </svg>
       </div>
       <span class="logo-text">TipFlow</span>
     </div>
@@ -185,8 +191,8 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
         <div>
-          <div style="font-size:0.68rem;color:#475569;font-weight:600;margin-bottom:1px;">New Tip Received</div>
-          <div style="font-size:1rem;font-weight:900;color:#f8fafc;letter-spacing:-0.02em;">+ €8.00</div>
+          <div style="font-size:0.68rem;color:#8A7A60;font-weight:600;margin-bottom:1px;">New Tip Received</div>
+          <div style="font-size:1rem;font-weight:900;color:#F5EFE0;letter-spacing:-0.02em;">+ €8.00</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:6px;">
@@ -198,8 +204,8 @@
 
   <div class="fl-c" style="position:absolute;right:max(20px,5%);top:28%;z-index:2;display:none;" id="notif2">
     <div class="glass-static" style="padding:16px 20px;min-width:190px;box-shadow:0 20px 60px rgba(0,0,0,0.6);">
-      <div style="font-size:0.68rem;color:#475569;font-weight:600;margin-bottom:10px;">This Week's Tips</div>
-      <div style="font-size:1.5rem;font-weight:900;color:#f8fafc;letter-spacing:-0.04em;margin-bottom:6px;">€342.50</div>
+      <div style="font-size:0.68rem;color:#8A7A60;font-weight:600;margin-bottom:10px;">This Week's Tips</div>
+      <div style="font-size:1.5rem;font-weight:900;color:#F5EFE0;letter-spacing:-0.04em;margin-bottom:6px;">€342.50</div>
       <div style="display:flex;align-items:center;gap:5px;">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
         <span style="font-size:0.7rem;color:#34d399;font-weight:700;">+24% vs last week</span>
@@ -210,16 +216,16 @@
   <div style="max-width:780px;margin:0 auto;text-align:center;position:relative;z-index:1;">
 
     <div class="fa eyebrow" style="margin-bottom:24px;">
-      <span class="blink" style="width:6px;height:6px;border-radius:50%;background:#3b82f6;display:inline-block;"></span>
+      <span class="blink" style="width:6px;height:6px;border-radius:50%;background:#C9A44C;display:inline-block;"></span>
       Now live across Eastern Europe
     </div>
 
-    <h1 class="fa2" style="font-size:clamp(2.8rem,7.5vw,5.8rem);font-weight:900;letter-spacing:-0.045em;line-height:1.02;color:#f8fafc;margin-bottom:22px;">
+    <h1 class="fa2" style="font-size:clamp(2.8rem,7.5vw,5.8rem);font-weight:900;letter-spacing:-0.045em;line-height:1.02;color:#F5EFE0;margin-bottom:22px;">
       Your guests want<br/>to tip.
       <span class="shimmer-h" style="display:block;">Make it effortless.</span>
     </h1>
 
-    <p class="fa3" style="font-size:1.08rem;color:#64748b;max-width:520px;margin:0 auto 40px;line-height:1.75;">
+    <p class="fa3" style="font-size:1.08rem;color:#8A7A60;max-width:520px;margin:0 auto 40px;line-height:1.75;">
       TipFlow puts a QR code on every table. Guests tip in seconds — no app, no cash. Staff get paid directly to their bank account via SEPA. You get full visibility.
     </p>
 
@@ -227,7 +233,7 @@
       <a href="#pricing" class="btn-primary">Start Free — No Card Needed <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <a href="#how" class="btn-secondary">See How It Works</a>
     </div>
-    <div class="fa4" style="font-size:0.75rem;color:#334155;">No setup fee · Cancel anytime · GDPR compliant</div>
+    <div class="fa4" style="font-size:0.75rem;color:#8A7A60;">No setup fee · Cancel anytime · GDPR compliant</div>
 
   </div>
 </section>
@@ -267,16 +273,16 @@
 
       <!-- Left: Problem -->
       <div class="reveal">
-        <p style="font-size:0.7rem;color:#475569;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:20px;">The problem today</p>
-        <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-0.035em;color:#f8fafc;line-height:1.15;margin-bottom:24px;">Cash tips are<br/>dying out.</h2>
+        <p style="font-size:0.7rem;color:#8A7A60;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:20px;">The problem today</p>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-0.035em;color:#F5EFE0;line-height:1.15;margin-bottom:24px;">Cash tips are<br/>dying out.</h2>
         <div style="display:flex;flex-direction:column;gap:16px;">
           <div style="display:flex;gap:14px;align-items:flex-start;">
             <div style="width:28px;height:28px;border-radius:8px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </div>
             <div>
-              <div style="font-size:0.88rem;font-weight:700;color:#e2e8f0;margin-bottom:3px;">Guests don't carry cash anymore</div>
-              <div style="font-size:0.8rem;color:#475569;line-height:1.6;">Contactless payments are the norm — when guests can't tip, they often don't.</div>
+              <div style="font-size:0.88rem;font-weight:700;color:#F5EFE0;margin-bottom:3px;">Guests don't carry cash anymore</div>
+              <div style="font-size:0.8rem;color:#8A7A60;line-height:1.6;">Contactless payments are the norm — when guests can't tip, they often don't.</div>
             </div>
           </div>
           <div style="display:flex;gap:14px;align-items:flex-start;">
@@ -284,8 +290,8 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </div>
             <div>
-              <div style="font-size:0.88rem;font-weight:700;color:#e2e8f0;margin-bottom:3px;">Staff lose income. Turnover rises.</div>
-              <div style="font-size:0.8rem;color:#475569;line-height:1.6;">Good waiters leave when tips dry up. Replacing them costs more than fixing the problem.</div>
+              <div style="font-size:0.88rem;font-weight:700;color:#F5EFE0;margin-bottom:3px;">Staff lose income. Turnover rises.</div>
+              <div style="font-size:0.8rem;color:#8A7A60;line-height:1.6;">Good waiters leave when tips dry up. Replacing them costs more than fixing the problem.</div>
             </div>
           </div>
           <div style="display:flex;gap:14px;align-items:flex-start;">
@@ -293,8 +299,8 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </div>
             <div>
-              <div style="font-size:0.88rem;font-weight:700;color:#e2e8f0;margin-bottom:3px;">Zero visibility for the business</div>
-              <div style="font-size:0.8rem;color:#475569;line-height:1.6;">Cash tips are invisible. No records, no fairness, no way to see who your best performers are.</div>
+              <div style="font-size:0.88rem;font-weight:700;color:#F5EFE0;margin-bottom:3px;">Zero visibility for the business</div>
+              <div style="font-size:0.8rem;color:#8A7A60;line-height:1.6;">Cash tips are invisible. No records, no fairness, no way to see who your best performers are.</div>
             </div>
           </div>
         </div>
@@ -303,15 +309,15 @@
       <!-- Right: Solution -->
       <div class="reveal" style="transition-delay:0.1s;">
         <p style="font-size:0.7rem;color:#22c55e;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:20px;">The TipFlow solution</p>
-        <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-0.035em;color:#f8fafc;line-height:1.15;margin-bottom:24px;">A QR code that<br/>changes everything.</h2>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-0.035em;color:#F5EFE0;line-height:1.15;margin-bottom:24px;">A QR code that<br/>changes everything.</h2>
         <div style="display:flex;flex-direction:column;gap:16px;">
           <div style="display:flex;gap:14px;align-items:flex-start;">
             <div style="width:28px;height:28px;border-radius:8px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
             </div>
             <div>
-              <div style="font-size:0.88rem;font-weight:700;color:#e2e8f0;margin-bottom:3px;">Guests tip in under 10 seconds</div>
-              <div style="font-size:0.8rem;color:#475569;line-height:1.6;">Scan, tap an amount, pay by card. No app, no signup. Works on every smartphone.</div>
+              <div style="font-size:0.88rem;font-weight:700;color:#F5EFE0;margin-bottom:3px;">Guests tip in under 10 seconds</div>
+              <div style="font-size:0.8rem;color:#8A7A60;line-height:1.6;">Scan, tap an amount, pay by card. No app, no signup. Works on every smartphone.</div>
             </div>
           </div>
           <div style="display:flex;gap:14px;align-items:flex-start;">
@@ -319,8 +325,8 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
             </div>
             <div>
-              <div style="font-size:0.88rem;font-weight:700;color:#e2e8f0;margin-bottom:3px;">Staff earn more, stay longer</div>
-              <div style="font-size:0.8rem;color:#475569;line-height:1.6;">Tips land directly in their bank account via SEPA — daily or weekly. No waiting, no cash handling.</div>
+              <div style="font-size:0.88rem;font-weight:700;color:#F5EFE0;margin-bottom:3px;">Staff earn more, stay longer</div>
+              <div style="font-size:0.8rem;color:#8A7A60;line-height:1.6;">Tips land directly in their bank account via SEPA — daily or weekly. No waiting, no cash handling.</div>
             </div>
           </div>
           <div style="display:flex;gap:14px;align-items:flex-start;">
@@ -328,8 +334,8 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
             </div>
             <div>
-              <div style="font-size:0.88rem;font-weight:700;color:#e2e8f0;margin-bottom:3px;">You see everything in one dashboard</div>
-              <div style="font-size:0.8rem;color:#475569;line-height:1.6;">Real-time tip volume, top performers, payout history. Full records. Total transparency.</div>
+              <div style="font-size:0.88rem;font-weight:700;color:#F5EFE0;margin-bottom:3px;">You see everything in one dashboard</div>
+              <div style="font-size:0.8rem;color:#8A7A60;line-height:1.6;">Real-time tip volume, top performers, payout history. Full records. Total transparency.</div>
             </div>
           </div>
         </div>
@@ -353,63 +359,63 @@
 
     <div style="text-align:center;margin-bottom:64px;" class="reveal">
       <span class="eyebrow" style="margin-bottom:18px;display:inline-flex;">How It Works</span>
-      <h2 style="font-size:clamp(2rem,5vw,3.4rem);font-weight:900;letter-spacing:-0.04em;color:#f8fafc;margin-top:16px;line-height:1.1;">
-        Set up in an afternoon.<br/><span class="g-blue" style="-webkit-text-fill-color:transparent;">Tips start flowing that evening.</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);font-weight:900;letter-spacing:-0.04em;color:#F5EFE0;margin-top:16px;line-height:1.1;">
+        Set up in an afternoon.<br/><span class="g-gold" style="-webkit-text-fill-color:transparent;">Tips start flowing that evening.</span>
       </h2>
     </div>
 
     <!-- Steps -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:20px;overflow:hidden;margin-bottom:48px;" class="reveal">
 
-      <div style="background:#050810;padding:40px 30px;position:relative;">
-        <div style="font-size:0.65rem;color:#1d4ed8;font-weight:800;letter-spacing:0.12em;margin-bottom:22px;">STEP 01</div>
-        <div style="width:50px;height:50px;border-radius:13px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div style="background:#080E18;padding:40px 30px;position:relative;">
+        <div style="font-size:0.65rem;color:#C9A44C;font-weight:800;letter-spacing:0.12em;margin-bottom:22px;">STEP 01</div>
+        <div style="width:50px;height:50px;border-radius:13px;background:rgba(201,164,76,0.1);border:1px solid rgba(201,164,76,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 style="font-size:1.05rem;font-weight:800;color:#f8fafc;margin-bottom:10px;">Create your account</h3>
-        <p style="font-size:0.82rem;color:#475569;line-height:1.7;">Sign up, add your venue details, and connect your bank account. Takes under 5 minutes. We verify your details securely via Stripe.</p>
+        <h3 style="font-size:1.05rem;font-weight:800;color:#F5EFE0;margin-bottom:10px;">Create your account</h3>
+        <p style="font-size:0.82rem;color:#8A7A60;line-height:1.7;">Sign up, add your venue details, and connect your bank account. Takes under 5 minutes. We verify your details securely via Stripe.</p>
       </div>
 
-      <div style="background:#050810;padding:40px 30px;">
-        <div style="font-size:0.65rem;color:#6d28d9;font-weight:800;letter-spacing:0.12em;margin-bottom:22px;">STEP 02</div>
-        <div style="width:50px;height:50px;border-radius:13px;background:rgba(109,40,217,0.1);border:1px solid rgba(109,40,217,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M16 3.13a4 4 0 010 7.75"/><path d="M21 21v-2a4 4 0 00-3-3.85"/></svg>
+      <div style="background:#080E18;padding:40px 30px;">
+        <div style="font-size:0.65rem;color:#B8892A;font-weight:800;letter-spacing:0.12em;margin-bottom:22px;">STEP 02</div>
+        <div style="width:50px;height:50px;border-radius:13px;background:rgba(201,164,76,0.1);border:1px solid rgba(201,164,76,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4B48A" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M16 3.13a4 4 0 010 7.75"/><path d="M21 21v-2a4 4 0 00-3-3.85"/></svg>
         </div>
-        <h3 style="font-size:1.05rem;font-weight:800;color:#f8fafc;margin-bottom:10px;">Add your staff</h3>
-        <p style="font-size:0.82rem;color:#475569;line-height:1.7;">Add waiters, bartenders, or anyone you want to tip. Each person gets a unique QR code — printed on cards, receipts, or an NFC badge.</p>
+        <h3 style="font-size:1.05rem;font-weight:800;color:#F5EFE0;margin-bottom:10px;">Add your staff</h3>
+        <p style="font-size:0.82rem;color:#8A7A60;line-height:1.7;">Add waiters, bartenders, or anyone you want to tip. Each person gets a unique QR code — printed on cards, receipts, or an NFC badge.</p>
       </div>
 
-      <div style="background:#050810;padding:40px 30px;">
+      <div style="background:#080E18;padding:40px 30px;">
         <div style="font-size:0.65rem;color:#047857;font-weight:800;letter-spacing:0.12em;margin-bottom:22px;">STEP 03</div>
         <div style="width:50px;height:50px;border-radius:13px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M17 17h4"/><path d="M17 21v-4"/></svg>
         </div>
-        <h3 style="font-size:1.05rem;font-weight:800;color:#f8fafc;margin-bottom:10px;">Place the QR codes</h3>
-        <p style="font-size:0.82rem;color:#475569;line-height:1.7;">Put QR cards on tables, add to receipts, or hand out NFC badges. Guests scan with their phone camera — no app needed — and tip in seconds.</p>
+        <h3 style="font-size:1.05rem;font-weight:800;color:#F5EFE0;margin-bottom:10px;">Place the QR codes</h3>
+        <p style="font-size:0.82rem;color:#8A7A60;line-height:1.7;">Put QR cards on tables, add to receipts, or hand out NFC badges. Guests scan with their phone camera — no app needed — and tip in seconds.</p>
       </div>
 
-      <div style="background:#050810;padding:40px 30px;">
+      <div style="background:#080E18;padding:40px 30px;">
         <div style="font-size:0.65rem;color:#b45309;font-weight:800;letter-spacing:0.12em;margin-bottom:22px;">STEP 04</div>
         <div style="width:50px;height:50px;border-radius:13px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
         </div>
-        <h3 style="font-size:1.05rem;font-weight:800;color:#f8fafc;margin-bottom:10px;">Tips flow to the bank</h3>
-        <p style="font-size:0.82rem;color:#475569;line-height:1.7;">Staff get notified instantly when they receive a tip. Funds land in their bank account daily or weekly via SEPA — with a full breakdown of every payout.</p>
+        <h3 style="font-size:1.05rem;font-weight:800;color:#F5EFE0;margin-bottom:10px;">Tips flow to the bank</h3>
+        <p style="font-size:0.82rem;color:#8A7A60;line-height:1.7;">Staff get notified instantly when they receive a tip. Funds land in their bank account daily or weekly via SEPA — with a full breakdown of every payout.</p>
       </div>
 
     </div>
 
     <!-- Payment methods strip -->
     <div class="glass-static reveal" style="padding:24px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;">
-      <span style="font-size:0.7rem;color:#334155;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Guests can pay with</span>
+      <span style="font-size:0.7rem;color:#8A7A60;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Guests can pay with</span>
       <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center;">
-        <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#64748b;font-weight:600;">💳 Visa / Mastercard</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#8A7A60;font-weight:600;">💳 Visa / Mastercard</div>
         <div style="width:1px;height:14px;background:#1e293b;"></div>
-        <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#64748b;font-weight:600;">🅿️ PayPal</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#8A7A60;font-weight:600;">🅿️ PayPal</div>
         <div style="width:1px;height:14px;background:#1e293b;"></div>
-        <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#64748b;font-weight:600;">₿ Crypto</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#8A7A60;font-weight:600;">₿ Crypto</div>
         <div style="width:1px;height:14px;background:#1e293b;"></div>
-        <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#64748b;font-weight:600;">📱 Google / Apple Pay</div>
+        <div style="display:flex;align-items:center;gap:7px;font-size:0.85rem;color:#8A7A60;font-weight:600;">📱 Google / Apple Pay</div>
       </div>
     </div>
 
@@ -419,61 +425,61 @@
 <div class="hr"></div>
 
 <!-- ─── FOR YOUR STAFF ──────────────────────────────────────── -->
-<section id="for-staff" style="padding:100px 28px;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(124,58,237,0.06),transparent);">
+<section id="for-staff" style="padding:100px 28px;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(201,164,76,0.06),transparent);">
   <div class="wrap">
 
     <div style="display:grid;align-items:center;gap:64px;" class="staff-grid">
 
       <!-- Left: Staff app mockup -->
       <div class="fl-b reveal" style="position:relative;">
-        <div style="background:#080f1e;border:1px solid rgba(255,255,255,0.08);border-radius:32px;overflow:hidden;max-width:300px;margin:0 auto;box-shadow:0 40px 100px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);">
+        <div style="background:#0D1625;border:1px solid rgba(255,255,255,0.08);border-radius:32px;overflow:hidden;max-width:300px;margin:0 auto;box-shadow:0 40px 100px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04);">
           <!-- Phone status bar -->
-          <div style="background:#0c1525;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:space-between;">
-            <div style="font-size:0.7rem;font-weight:700;color:#94a3b8;">9:41</div>
+          <div style="background:#0F1E30;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-size:0.7rem;font-weight:700;color:#8A7A60;">9:41</div>
             <div style="width:80px;height:20px;background:#111827;border-radius:999px;"></div>
             <div style="display:flex;gap:4px;align-items:center;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="#94a3b8"><path d="M1.5 8.5C5.5 4.5 18.5 4.5 22.5 8.5" opacity=".3"/><path d="M5 12c2.8-2.8 12-2.8 14 0" opacity=".6"/><path d="M8.5 15.5c1.5-1.5 6.5-1.5 7 0"/><circle cx="12" cy="19" r="1.5" fill="#94a3b8"/></svg>
-              <div style="width:18px;height:10px;border:1.5px solid #64748b;border-radius:3px;position:relative;"><div style="position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:3px;height:6px;background:#64748b;border-radius:1px;"></div><div style="background:#22c55e;width:70%;height:100%;border-radius:1px;"></div></div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#8A7A60"><path d="M1.5 8.5C5.5 4.5 18.5 4.5 22.5 8.5" opacity=".3"/><path d="M5 12c2.8-2.8 12-2.8 14 0" opacity=".6"/><path d="M8.5 15.5c1.5-1.5 6.5-1.5 7 0"/><circle cx="12" cy="19" r="1.5" fill="#8A7A60"/></svg>
+              <div style="width:18px;height:10px;border:1.5px solid #8A7A60;border-radius:3px;position:relative;"><div style="position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:3px;height:6px;background:#8A7A60;border-radius:1px;"></div><div style="background:#22c55e;width:70%;height:100%;border-radius:1px;"></div></div>
             </div>
           </div>
           <!-- App content -->
-          <div style="background:#060d1a;padding:24px 20px;min-height:460px;">
+          <div style="background:#080E18;padding:24px 20px;min-height:460px;">
             <!-- Header -->
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
               <div>
-                <div style="font-size:0.7rem;color:#475569;font-weight:600;margin-bottom:2px;">Good evening,</div>
-                <div style="font-size:1rem;font-weight:800;color:#f8fafc;">Marek 👋</div>
+                <div style="font-size:0.7rem;color:#8A7A60;font-weight:600;margin-bottom:2px;">Good evening,</div>
+                <div style="font-size:1rem;font-weight:800;color:#F5EFE0;">Marek 👋</div>
               </div>
-              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;color:white;">M</div>
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#C9A44C,#8A6820);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;color:white;">M</div>
             </div>
             <!-- Balance card -->
-            <div style="background:linear-gradient(135deg,rgba(37,99,235,0.2),rgba(109,40,217,0.15));border:1px solid rgba(37,99,235,0.3);border-radius:16px;padding:20px;margin-bottom:16px;">
-              <div style="font-size:0.68rem;color:#93c5fd;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Balance this week</div>
-              <div style="font-size:2.2rem;font-weight:900;color:#f8fafc;letter-spacing:-0.04em;margin-bottom:12px;">€127.50</div>
+            <div style="background:linear-gradient(135deg,rgba(201,164,76,0.2),rgba(184,137,42,0.15));border:1px solid rgba(201,164,76,0.3);border-radius:16px;padding:20px;margin-bottom:16px;">
+              <div style="font-size:0.68rem;color:#D4B48A;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Balance this week</div>
+              <div style="font-size:2.2rem;font-weight:900;color:#F5EFE0;letter-spacing:-0.04em;margin-bottom:12px;">€127.50</div>
               <div style="display:flex;align-items:center;justify-content:space-between;">
-                <div style="font-size:0.72rem;color:#6366f1;font-weight:600;">Next payout: tomorrow</div>
+                <div style="font-size:0.72rem;color:#C9A44C;font-weight:600;">Next payout: tomorrow</div>
                 <div style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.25);border-radius:999px;padding:3px 10px;font-size:0.65rem;font-weight:700;color:#22c55e;">SEPA</div>
               </div>
             </div>
             <!-- Recent tips -->
-            <div style="font-size:0.68rem;color:#334155;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;">Recent Tips</div>
+            <div style="font-size:0.68rem;color:#8A7A60;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;">Recent Tips</div>
             <div style="display:flex;flex-direction:column;gap:6px;">
               <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:rgba(255,255,255,0.03);border-radius:10px;border:1px solid rgba(255,255,255,0.05);">
                 <div style="display:flex;align-items:center;gap:9px;">
                   <div style="width:28px;height:28px;border-radius:8px;background:rgba(34,197,94,0.12);display:flex;align-items:center;justify-content:center;font-size:0.7rem;">💳</div>
                   <div>
-                    <div style="font-size:0.75rem;font-weight:700;color:#e2e8f0;">Card</div>
-                    <div style="font-size:0.65rem;color:#334155;">2 min ago</div>
+                    <div style="font-size:0.75rem;font-weight:700;color:#F5EFE0;">Card</div>
+                    <div style="font-size:0.65rem;color:#8A7A60;">2 min ago</div>
                   </div>
                 </div>
                 <div style="font-size:0.85rem;font-weight:800;color:#22c55e;">+ €5.00</div>
               </div>
               <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:rgba(255,255,255,0.03);border-radius:10px;border:1px solid rgba(255,255,255,0.05);">
                 <div style="display:flex;align-items:center;gap:9px;">
-                  <div style="width:28px;height:28px;border-radius:8px;background:rgba(37,99,235,0.12);display:flex;align-items:center;justify-content:center;font-size:0.7rem;">🅿️</div>
+                  <div style="width:28px;height:28px;border-radius:8px;background:rgba(201,164,76,0.12);display:flex;align-items:center;justify-content:center;font-size:0.7rem;">🅿️</div>
                   <div>
-                    <div style="font-size:0.75rem;font-weight:700;color:#e2e8f0;">PayPal</div>
-                    <div style="font-size:0.65rem;color:#334155;">18 min ago</div>
+                    <div style="font-size:0.75rem;font-weight:700;color:#F5EFE0;">PayPal</div>
+                    <div style="font-size:0.65rem;color:#8A7A60;">18 min ago</div>
                   </div>
                 </div>
                 <div style="font-size:0.85rem;font-weight:800;color:#22c55e;">+ €10.00</div>
@@ -482,8 +488,8 @@
                 <div style="display:flex;align-items:center;gap:9px;">
                   <div style="width:28px;height:28px;border-radius:8px;background:rgba(251,191,36,0.12);display:flex;align-items:center;justify-content:center;font-size:0.7rem;">💳</div>
                   <div>
-                    <div style="font-size:0.75rem;font-weight:700;color:#e2e8f0;">Card</div>
-                    <div style="font-size:0.65rem;color:#334155;">1 hr ago</div>
+                    <div style="font-size:0.75rem;font-weight:700;color:#F5EFE0;">Card</div>
+                    <div style="font-size:0.65rem;color:#8A7A60;">1 hr ago</div>
                   </div>
                 </div>
                 <div style="font-size:0.85rem;font-weight:800;color:#22c55e;">+ €3.00</div>
@@ -494,8 +500,8 @@
         <!-- Floating badge -->
         <div class="fl-a" style="position:absolute;bottom:60px;right:0;transform:translateX(20px);">
           <div class="glass-static" style="padding:12px 16px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
-            <div style="font-size:0.68rem;color:#475569;font-weight:600;margin-bottom:4px;">No app needed</div>
-            <div style="font-size:0.8rem;font-weight:800;color:#f8fafc;display:flex;align-items:center;gap:6px;">
+            <div style="font-size:0.68rem;color:#8A7A60;font-weight:600;margin-bottom:4px;">No app needed</div>
+            <div style="font-size:0.8rem;font-weight:800;color:#F5EFE0;display:flex;align-items:center;gap:6px;">
               <span style="font-size:1.1rem;">📲</span> Works in the browser
             </div>
           </div>
@@ -505,38 +511,38 @@
       <!-- Right: Copy -->
       <div class="reveal" style="transition-delay:0.1s;">
         <span class="eyebrow" style="margin-bottom:20px;display:inline-flex;">For Your Staff</span>
-        <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.04em;color:#f8fafc;line-height:1.1;margin-bottom:20px;margin-top:16px;">
+        <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.04em;color:#F5EFE0;line-height:1.1;margin-bottom:20px;margin-top:16px;">
           Happy staff.<br/><span class="g-green" style="-webkit-text-fill-color:transparent;">Lower turnover.</span>
         </h2>
-        <p style="font-size:0.9rem;color:#475569;line-height:1.75;margin-bottom:32px;">
+        <p style="font-size:0.9rem;color:#8A7A60;line-height:1.75;margin-bottom:32px;">
           Every staff member gets their own tip page. They see every tip the moment it arrives, track their earnings in real time, and get paid directly to their bank account — no manager needed.
         </p>
         <div style="display:flex;flex-direction:column;gap:14px;">
           <div style="display:flex;gap:12px;align-items:flex-start;">
-            <div style="width:34px;height:34px;border-radius:9px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <div style="width:34px;height:34px;border-radius:9px;background:rgba(201,164,76,0.1);border:1px solid rgba(201,164,76,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D4B48A" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
             </div>
             <div>
-              <div style="font-size:0.88rem;font-weight:700;color:#e2e8f0;margin-bottom:2px;">Instant notifications</div>
-              <div style="font-size:0.8rem;color:#475569;line-height:1.6;">Staff get a push notification the second a tip arrives. No waiting to count cash at the end of a shift.</div>
+              <div style="font-size:0.88rem;font-weight:700;color:#F5EFE0;margin-bottom:2px;">Instant notifications</div>
+              <div style="font-size:0.8rem;color:#8A7A60;line-height:1.6;">Staff get a push notification the second a tip arrives. No waiting to count cash at the end of a shift.</div>
             </div>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
-            <div style="width:34px;height:34px;border-radius:9px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            <div style="width:34px;height:34px;border-radius:9px;background:rgba(201,164,76,0.1);border:1px solid rgba(201,164,76,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D4B48A" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
             </div>
             <div>
-              <div style="font-size:0.88rem;font-weight:700;color:#e2e8f0;margin-bottom:2px;">SEPA payouts to their account</div>
-              <div style="font-size:0.8rem;color:#475569;line-height:1.6;">Daily or weekly payouts straight to their bank. Full gross/net breakdown. No cash, no hassle.</div>
+              <div style="font-size:0.88rem;font-weight:700;color:#F5EFE0;margin-bottom:2px;">SEPA payouts to their account</div>
+              <div style="font-size:0.8rem;color:#8A7A60;line-height:1.6;">Daily or weekly payouts straight to their bank. Full gross/net breakdown. No cash, no hassle.</div>
             </div>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
-            <div style="width:34px;height:34px;border-radius:9px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/></svg>
+            <div style="width:34px;height:34px;border-radius:9px;background:rgba(201,164,76,0.1);border:1px solid rgba(201,164,76,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D4B48A" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/></svg>
             </div>
             <div>
-              <div style="font-size:0.88rem;font-weight:700;color:#e2e8f0;margin-bottom:2px;">No app store needed</div>
-              <div style="font-size:0.8rem;color:#475569;line-height:1.6;">The staff app is a Progressive Web App. They install it from the browser. Works on Android and iPhone.</div>
+              <div style="font-size:0.88rem;font-weight:700;color:#F5EFE0;margin-bottom:2px;">No app store needed</div>
+              <div style="font-size:0.8rem;color:#8A7A60;line-height:1.6;">The staff app is a Progressive Web App. They install it from the browser. Works on Android and iPhone.</div>
             </div>
           </div>
         </div>
@@ -560,73 +566,73 @@
 
     <div style="text-align:center;margin-bottom:64px;" class="reveal">
       <span class="eyebrow" style="margin-bottom:18px;display:inline-flex;">For Your Business</span>
-      <h2 style="font-size:clamp(2rem,5vw,3.4rem);font-weight:900;letter-spacing:-0.04em;color:#f8fafc;margin-top:16px;line-height:1.1;">
-        Everything you need.<br/><span class="g-blue" style="-webkit-text-fill-color:transparent;">Nothing you don't.</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);font-weight:900;letter-spacing:-0.04em;color:#F5EFE0;margin-top:16px;line-height:1.1;">
+        Everything you need.<br/><span class="g-gold" style="-webkit-text-fill-color:transparent;">Nothing you don't.</span>
       </h2>
     </div>
 
     <div class="feat-grid reveal">
 
       <div class="feat-cell" style="border-radius:0;">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.8"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(201,164,76,0.1);border:1px solid rgba(201,164,76,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.8"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
         </div>
-        <h3 style="font-size:0.95rem;font-weight:800;color:#f8fafc;margin-bottom:8px;">Real-time dashboard</h3>
-        <p style="font-size:0.8rem;color:#475569;line-height:1.7;">See tip volume, top performers, and payout status — all in one place. Filter by date, staff member, or venue.</p>
+        <h3 style="font-size:0.95rem;font-weight:800;color:#F5EFE0;margin-bottom:8px;">Real-time dashboard</h3>
+        <p style="font-size:0.8rem;color:#8A7A60;line-height:1.7;">See tip volume, top performers, and payout status — all in one place. Filter by date, staff member, or venue.</p>
       </div>
 
       <div class="feat-cell">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(109,40,217,0.1);border:1px solid rgba(109,40,217,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(201,164,76,0.1);border:1px solid rgba(201,164,76,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4B48A" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
         </div>
-        <h3 style="font-size:0.95rem;font-weight:800;color:#f8fafc;margin-bottom:8px;">QR & NFC badges</h3>
-        <p style="font-size:0.8rem;color:#475569;line-height:1.7;">Generate, print, and assign QR codes to any staff member. Activate or deactivate instantly when staff changes happen.</p>
+        <h3 style="font-size:0.95rem;font-weight:800;color:#F5EFE0;margin-bottom:8px;">QR & NFC badges</h3>
+        <p style="font-size:0.8rem;color:#8A7A60;line-height:1.7;">Generate, print, and assign QR codes to any staff member. Activate or deactivate instantly when staff changes happen.</p>
       </div>
 
       <div class="feat-cell">
         <div style="width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4"/><circle cx="17" cy="17" r="4"/><path d="M17 13v4l2 2"/></svg>
         </div>
-        <h3 style="font-size:0.95rem;font-weight:800;color:#f8fafc;margin-bottom:8px;">Tip pooling</h3>
-        <p style="font-size:0.8rem;color:#475569;line-height:1.7;">Pool tips across the team and split by equal share or hours worked. Fair, automatic, and transparent for everyone.</p>
+        <h3 style="font-size:0.95rem;font-weight:800;color:#F5EFE0;margin-bottom:8px;">Tip pooling</h3>
+        <p style="font-size:0.8rem;color:#8A7A60;line-height:1.7;">Pool tips across the team and split by equal share or hours worked. Fair, automatic, and transparent for everyone.</p>
       </div>
 
       <div class="feat-cell">
         <div style="width:44px;height:44px;border-radius:12px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
         </div>
-        <h3 style="font-size:0.95rem;font-weight:800;color:#f8fafc;margin-bottom:8px;">Flexible payouts</h3>
-        <p style="font-size:0.8rem;color:#475569;line-height:1.7;">Choose daily or weekly SEPA payouts. Every payout shows gross amount, TipFlow fee, and net received — no surprises.</p>
+        <h3 style="font-size:0.95rem;font-weight:800;color:#F5EFE0;margin-bottom:8px;">Flexible payouts</h3>
+        <p style="font-size:0.8rem;color:#8A7A60;line-height:1.7;">Choose daily or weekly SEPA payouts. Every payout shows gross amount, TipFlow fee, and net received — no surprises.</p>
       </div>
 
       <div class="feat-cell">
         <div style="width:44px;height:44px;border-radius:12px;background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fb7185" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <h3 style="font-size:0.95rem;font-weight:800;color:#f8fafc;margin-bottom:8px;">Multi-venue support</h3>
-        <p style="font-size:0.8rem;color:#475569;line-height:1.7;">Manage multiple restaurants, bars, or hotels from one account. Separate analytics and payout controls per location.</p>
+        <h3 style="font-size:0.95rem;font-weight:800;color:#F5EFE0;margin-bottom:8px;">Multi-venue support</h3>
+        <p style="font-size:0.8rem;color:#8A7A60;line-height:1.7;">Manage multiple restaurants, bars, or hotels from one account. Separate analytics and payout controls per location.</p>
       </div>
 
       <div class="feat-cell">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(201,164,76,0.1);border:1px solid rgba(201,164,76,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 style="font-size:0.95rem;font-weight:800;color:#f8fafc;margin-bottom:8px;">Built-in compliance</h3>
-        <p style="font-size:0.8rem;color:#475569;line-height:1.7;">Immutable audit trail for every tip and payout. GDPR-compliant data handling. PCI compliance inherited via Stripe — no raw card data ever touches your systems.</p>
+        <h3 style="font-size:0.95rem;font-weight:800;color:#F5EFE0;margin-bottom:8px;">Built-in compliance</h3>
+        <p style="font-size:0.8rem;color:#8A7A60;line-height:1.7;">Immutable audit trail for every tip and payout. GDPR-compliant data handling. PCI compliance inherited via Stripe — no raw card data ever touches your systems.</p>
       </div>
 
     </div>
 
     <!-- Currencies -->
     <div class="glass-static reveal" style="margin-top:16px;padding:28px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px;">
-      <span style="font-size:0.7rem;color:#334155;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">All major Eastern European currencies</span>
+      <span style="font-size:0.7rem;color:#8A7A60;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">All major Eastern European currencies</span>
       <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
-        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#e2e8f0;">🇪🇺 EUR</div>
-        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#e2e8f0;">🇵🇱 PLN</div>
-        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#e2e8f0;">🇨🇿 CZK</div>
-        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#e2e8f0;">🇷🇴 RON</div>
-        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#e2e8f0;">🇭🇺 HUF</div>
-        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#e2e8f0;">🇧🇬 BGN</div>
+        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#F5EFE0;">🇪🇺 EUR</div>
+        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#F5EFE0;">🇵🇱 PLN</div>
+        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#F5EFE0;">🇨🇿 CZK</div>
+        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#F5EFE0;">🇷🇴 RON</div>
+        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#F5EFE0;">🇭🇺 HUF</div>
+        <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:7px 14px;font-size:0.8rem;font-weight:700;color:#F5EFE0;">🇧🇬 BGN</div>
       </div>
     </div>
 
@@ -636,11 +642,11 @@
 <div class="hr"></div>
 
 <!-- ─── TESTIMONIALS ──────────────────────────────────────── -->
-<section style="padding:100px 28px;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(37,99,235,0.05),transparent);">
+<section style="padding:100px 28px;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(201,164,76,0.06),transparent);">
   <div class="wrap">
 
     <div style="text-align:center;margin-bottom:64px;" class="reveal">
-      <h2 style="font-size:clamp(2rem,5vw,3.4rem);font-weight:900;letter-spacing:-0.04em;color:#f8fafc;line-height:1.1;">
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);font-weight:900;letter-spacing:-0.04em;color:#F5EFE0;line-height:1.1;">
         Venues love it.<br/><span class="g-warm" style="-webkit-text-fill-color:transparent;">Staff love it more.</span>
       </h2>
     </div>
@@ -651,12 +657,12 @@
         <div style="display:flex;gap:4px;margin-bottom:18px;">
           <span style="color:#fbbf24;font-size:0.9rem;">★★★★★</span>
         </div>
-        <p style="font-size:0.88rem;color:#94a3b8;line-height:1.75;margin-bottom:20px;">"Our staff tips went up 40% in the first month. Guests who never had cash started tipping regularly. The dashboard is really clean — I check it every morning."</p>
+        <p style="font-size:0.88rem;color:#8A7A60;line-height:1.75;margin-bottom:20px;">"Our staff tips went up 40% in the first month. Guests who never had cash started tipping regularly. The dashboard is really clean — I check it every morning."</p>
         <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">J</div>
+          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#C9A44C,#8A6820);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">J</div>
           <div>
-            <div style="font-size:0.85rem;font-weight:700;color:#e2e8f0;">Jakub Novák</div>
-            <div style="font-size:0.75rem;color:#475569;">Restaurant Owner · Prague</div>
+            <div style="font-size:0.85rem;font-weight:700;color:#F5EFE0;">Jakub Novák</div>
+            <div style="font-size:0.75rem;color:#8A7A60;">Restaurant Owner · Prague</div>
           </div>
         </div>
       </div>
@@ -665,12 +671,12 @@
         <div style="display:flex;gap:4px;margin-bottom:18px;">
           <span style="color:#fbbf24;font-size:0.9rem;">★★★★★</span>
         </div>
-        <p style="font-size:0.88rem;color:#94a3b8;line-height:1.75;margin-bottom:20px;">"I used to lose tips because I didn't carry small bills for my staff. Now it's automatic. My best waiter told me it's the main reason he stays with us."</p>
+        <p style="font-size:0.88rem;color:#8A7A60;line-height:1.75;margin-bottom:20px;">"I used to lose tips because I didn't carry small bills for my staff. Now it's automatic. My best waiter told me it's the main reason he stays with us."</p>
         <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#db2777);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">A</div>
+          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#B8892A,#8A6820);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">A</div>
           <div>
-            <div style="font-size:0.85rem;font-weight:700;color:#e2e8f0;">Aneta Wiśniewska</div>
-            <div style="font-size:0.75rem;color:#475569;">Bar Manager · Warsaw</div>
+            <div style="font-size:0.85rem;font-weight:700;color:#F5EFE0;">Aneta Wiśniewska</div>
+            <div style="font-size:0.75rem;color:#8A7A60;">Bar Manager · Warsaw</div>
           </div>
         </div>
       </div>
@@ -679,12 +685,12 @@
         <div style="display:flex;gap:4px;margin-bottom:18px;">
           <span style="color:#fbbf24;font-size:0.9rem;">★★★★★</span>
         </div>
-        <p style="font-size:0.88rem;color:#94a3b8;line-height:1.75;margin-bottom:20px;">"Setup took literally an afternoon. QR cards printed, staff added, first tip came in that same evening. I wish we had this three years ago."</p>
+        <p style="font-size:0.88rem;color:#8A7A60;line-height:1.75;margin-bottom:20px;">"Setup took literally an afternoon. QR cards printed, staff added, first tip came in that same evening. I wish we had this three years ago."</p>
         <div style="display:flex;align-items:center;gap:12px;">
           <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#059669,#0891b2);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:0.85rem;flex-shrink:0;">D</div>
           <div>
-            <div style="font-size:0.85rem;font-weight:700;color:#e2e8f0;">Dragoș Ionescu</div>
-            <div style="font-size:0.75rem;color:#475569;">Hotel F&B Director · Bucharest</div>
+            <div style="font-size:0.85rem;font-weight:700;color:#F5EFE0;">Dragoș Ionescu</div>
+            <div style="font-size:0.75rem;color:#8A7A60;">Hotel F&B Director · Bucharest</div>
           </div>
         </div>
       </div>
@@ -702,65 +708,65 @@
 
     <div style="text-align:center;margin-bottom:64px;" class="reveal">
       <span class="eyebrow" style="margin-bottom:18px;display:inline-flex;">Pricing</span>
-      <h2 style="font-size:clamp(2rem,5vw,3.4rem);font-weight:900;letter-spacing:-0.04em;color:#f8fafc;margin-top:16px;line-height:1.1;">
-        Simple pricing.<br/><span class="g-blue" style="-webkit-text-fill-color:transparent;">Pay only when tips flow.</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);font-weight:900;letter-spacing:-0.04em;color:#F5EFE0;margin-top:16px;line-height:1.1;">
+        Simple pricing.<br/><span class="g-gold" style="-webkit-text-fill-color:transparent;">Pay only when tips flow.</span>
       </h2>
-      <p style="color:#475569;margin-top:16px;font-size:0.9rem;">No monthly fees. No setup costs. We earn when you earn.</p>
+      <p style="color:#8A7A60;margin-top:16px;font-size:0.9rem;">No monthly fees. No setup costs. We earn when you earn.</p>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:900px;margin:0 auto;" class="reveal">
 
       <!-- Starter -->
       <div class="plan-card plan-basic">
-        <div style="font-size:0.7rem;color:#64748b;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:16px;">Starter</div>
-        <div style="font-size:3rem;font-weight:900;color:#f8fafc;letter-spacing:-0.05em;line-height:1;margin-bottom:6px;">1.5<span style="font-size:1.2rem;color:#64748b;font-weight:600;">%</span></div>
-        <div style="font-size:0.82rem;color:#475569;margin-bottom:28px;">per tip + Stripe processing fee</div>
+        <div style="font-size:0.7rem;color:#8A7A60;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:16px;">Starter</div>
+        <div style="font-size:3rem;font-weight:900;color:#F5EFE0;letter-spacing:-0.05em;line-height:1;margin-bottom:6px;">1.5<span style="font-size:1.2rem;color:#8A7A60;font-weight:600;">%</span></div>
+        <div style="font-size:0.82rem;color:#8A7A60;margin-bottom:28px;">per tip + Stripe processing fee</div>
         <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Up to 10 staff members</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 1 venue</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Weekly SEPA payouts</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> QR code generation</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Card + PayPal payments</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Up to 10 staff members</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 1 venue</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Weekly SEPA payouts</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> QR code generation</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Card + PayPal payments</div>
         </div>
         <a href="#" class="btn-secondary" style="width:100%;justify-content:center;">Get Started Free</a>
       </div>
 
       <!-- Pro (popular) -->
       <div class="plan-card plan-popular" style="position:relative;">
-        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#2563eb,#7c3aed);color:white;font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:999px;white-space:nowrap;">Most Popular</div>
-        <div style="font-size:0.7rem;color:#93c5fd;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:16px;">Pro</div>
-        <div style="font-size:3rem;font-weight:900;color:#f8fafc;letter-spacing:-0.05em;line-height:1;margin-bottom:6px;">1.0<span style="font-size:1.2rem;color:#93c5fd;font-weight:600;">%</span></div>
-        <div style="font-size:0.82rem;color:#64748b;margin-bottom:28px;">per tip + Stripe processing fee</div>
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#C9A44C,#B8892A);color:white;font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:999px;white-space:nowrap;">Most Popular</div>
+        <div style="font-size:0.7rem;color:#D4B48A;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:16px;">Pro</div>
+        <div style="font-size:3rem;font-weight:900;color:#F5EFE0;letter-spacing:-0.05em;line-height:1;margin-bottom:6px;">1.0<span style="font-size:1.2rem;color:#D4B48A;font-weight:600;">%</span></div>
+        <div style="font-size:0.82rem;color:#8A7A60;margin-bottom:28px;">per tip + Stripe processing fee</div>
         <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Unlimited staff</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Multiple venues</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Daily SEPA payouts</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> NFC badge support</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Card, PayPal + crypto</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Tip pooling</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Priority support</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Unlimited staff</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Multiple venues</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Daily SEPA payouts</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> NFC badge support</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Card, PayPal + crypto</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Tip pooling</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Priority support</div>
         </div>
         <a href="#" class="btn-primary" style="width:100%;justify-content:center;">Start Free Trial</a>
       </div>
 
       <!-- Enterprise -->
       <div class="plan-card plan-basic">
-        <div style="font-size:0.7rem;color:#64748b;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:16px;">Enterprise</div>
-        <div style="font-size:3rem;font-weight:900;color:#f8fafc;letter-spacing:-0.05em;line-height:1;margin-bottom:6px;">Custom</div>
-        <div style="font-size:0.82rem;color:#475569;margin-bottom:28px;">volume pricing for large groups</div>
+        <div style="font-size:0.7rem;color:#8A7A60;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:16px;">Enterprise</div>
+        <div style="font-size:3rem;font-weight:900;color:#F5EFE0;letter-spacing:-0.05em;line-height:1;margin-bottom:6px;">Custom</div>
+        <div style="font-size:0.82rem;color:#8A7A60;margin-bottom:28px;">volume pricing for large groups</div>
         <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Everything in Pro</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Volume fee discounts</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Dedicated account manager</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Custom payroll integrations</div>
-          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> SLA & uptime guarantees</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Everything in Pro</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Volume fee discounts</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Dedicated account manager</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Custom payroll integrations</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.82rem;color:#8A7A60;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> SLA & uptime guarantees</div>
         </div>
-        <a href="mailto:hello@tipflow.io" class="btn-secondary" style="width:100%;justify-content:center;">Talk to Sales</a>
+        <a href="mailto:info@tipking.eu" class="btn-secondary" style="width:100%;justify-content:center;">Talk to Sales</a>
       </div>
 
     </div>
 
-    <div style="text-align:center;margin-top:24px;font-size:0.78rem;color:#334155;" class="reveal">
+    <div style="text-align:center;margin-top:24px;font-size:0.78rem;color:#8A7A60;" class="reveal">
       14-day free trial on Pro · No card required to start · Cancel anytime
     </div>
 
@@ -769,38 +775,44 @@
 
 <!-- ─── FINAL CTA ─────────────────────────────────────────── -->
 <section style="padding:100px 28px;text-align:center;position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(29,78,216,0.12),transparent);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(201,164,76,0.08),transparent);pointer-events:none;"></div>
   <div style="max-width:620px;margin:0 auto;position:relative;z-index:1;" class="reveal">
-    <h2 style="font-size:clamp(2.5rem,7vw,4.8rem);font-weight:900;letter-spacing:-0.045em;color:#f8fafc;line-height:1.02;margin-bottom:18px;">
+    <h2 style="font-size:clamp(2.5rem,7vw,4.8rem);font-weight:900;letter-spacing:-0.045em;color:#F5EFE0;line-height:1.02;margin-bottom:18px;">
       Your guests are<br/>ready to tip.
     </h2>
-    <p style="color:#64748b;font-size:1rem;margin-bottom:40px;line-height:1.7;">Get TipFlow running tonight. No tech knowledge needed. No upfront costs. Just more tips for your staff — starting tomorrow.</p>
+    <p style="color:#8A7A60;font-size:1rem;margin-bottom:40px;line-height:1.7;">Get TipFlow running tonight. No tech knowledge needed. No upfront costs. Just more tips for your staff — starting tomorrow.</p>
     <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:20px;">
       <a href="#pricing" class="btn-primary" style="font-size:1rem;padding:17px 36px;">Start Free — No Card Needed <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
-    <div style="font-size:0.75rem;color:#334155;">Works in Poland, Czech Republic, Romania, Hungary, Bulgaria, and all Eurozone countries</div>
+    <div style="font-size:0.75rem;color:#8A7A60;">Works in Poland, Czech Republic, Romania, Hungary, Bulgaria, and all Eurozone countries</div>
   </div>
 </section>
 
 <!-- ─── FOOTER ────────────────────────────────────────────── -->
-<footer style="border-top:1px solid rgba(255,255,255,0.04);padding:48px 28px;">
+<footer style="border-top:1px solid rgba(201,164,76,0.1);padding:48px 28px;">
   <div class="wrap" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;">
     <div>
       <div class="logo" style="margin-bottom:10px;">
         <div class="logo-mark" style="width:28px;height:28px;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="white" stroke-width="2.2" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="white" stroke-width="2.2" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="white" stroke-width="2.2" stroke-linejoin="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 40 40" fill="none">
+            <path d="M6 28 L6 14 L13 20 L20 8 L27 20 L34 14 L34 28 Z" fill="#C9A44C"/>
+            <rect x="17" y="28" width="6" height="8" rx="1" fill="#C9A44C"/>
+            <circle cx="6" cy="13" r="2.5" fill="#C9A44C"/>
+            <circle cx="34" cy="13" r="2.5" fill="#C9A44C"/>
+            <circle cx="20" cy="7" r="2.5" fill="#C9A44C"/>
+          </svg>
         </div>
-        <span class="logo-text">TipFlow</span>
+        <span class="logo-text">TipKing</span>
       </div>
-      <div style="font-size:0.75rem;color:#334155;">Digital tipping for Eastern European hospitality</div>
+      <div style="font-size:0.75rem;color:#8A7A60;">Digital tipping for Eastern European hospitality</div>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:28px;">
-      <a href="#how" style="font-size:0.8rem;color:#334155;transition:color .2s;" onmouseover="this.style.color='#64748b'" onmouseout="this.style.color='#334155'">How It Works</a>
-      <a href="#features" style="font-size:0.8rem;color:#334155;transition:color .2s;" onmouseover="this.style.color='#64748b'" onmouseout="this.style.color='#334155'">Features</a>
-      <a href="#pricing" style="font-size:0.8rem;color:#334155;transition:color .2s;" onmouseover="this.style.color='#64748b'" onmouseout="this.style.color='#334155'">Pricing</a>
-      <a href="mailto:hello@tipflow.io" style="font-size:0.8rem;color:#334155;transition:color .2s;" onmouseover="this.style.color='#64748b'" onmouseout="this.style.color='#334155'">Contact</a>
+      <a href="#how" style="font-size:0.8rem;color:#8A7A60;transition:color .2s;" onmouseover="this.style.color='#D4B48A'" onmouseout="this.style.color='#8A7A60'">How It Works</a>
+      <a href="#features" style="font-size:0.8rem;color:#8A7A60;transition:color .2s;" onmouseover="this.style.color='#D4B48A'" onmouseout="this.style.color='#8A7A60'">Features</a>
+      <a href="#pricing" style="font-size:0.8rem;color:#8A7A60;transition:color .2s;" onmouseover="this.style.color='#D4B48A'" onmouseout="this.style.color='#8A7A60'">Pricing</a>
+      <a href="mailto:info@tipking.eu" style="font-size:0.8rem;color:#8A7A60;transition:color .2s;" onmouseover="this.style.color='#D4B48A'" onmouseout="this.style.color='#8A7A60'">Contact</a>
     </div>
-    <div style="font-size:0.72rem;color:#1e293b;">GDPR · PCI DSS · SEPA · © 2025 TipFlow</div>
+    <div style="font-size:0.72rem;color:#8A7A60;">GDPR · PCI DSS · SEPA · © 2025 TipKing</div>
   </div>
 </footer>
 
