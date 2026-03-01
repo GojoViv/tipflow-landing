@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TipFlow — Digital Tipping for Eastern Europe</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: {
+              50:  '#eff6ff',
+              100: '#dbeafe',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            },
+            amber: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #080c14; color: #e2e8f0; }
+
+    /* gradient mesh background */
+    .hero-bg {
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(37,99,235,0.25) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 40% at 80% 40%, rgba(251,191,36,0.08) 0%, transparent 60%),
+                  #080c14;
+    }
+
+    .card-glass {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(12px);
+    }
+
+    .card-glass:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(59,130,246,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .glow-blue { box-shadow: 0 0 40px rgba(37,99,235,0.25); }
+    .glow-amber { box-shadow: 0 0 40px rgba(251,191,36,0.15); }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .amber-text {
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .step-line::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 1px;
+      height: 3rem;
+      background: linear-gradient(to bottom, rgba(59,130,246,0.4), transparent);
+      transform: translateX(-50%);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #93c5fd;
+    }
+
+    .timeline-dot {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(37,99,235,0.4);
+    }
+
+    .price-card {
+      background: linear-gradient(135deg, rgba(37,99,235,0.15) 0%, rgba(124,58,237,0.1) 100%);
+      border: 1px solid rgba(37,99,235,0.4);
+    }
+
+    .country-flag { font-size: 1.5rem; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .float-anim { animation: float 4s ease-in-out infinite; }
+    .float-anim-delay { animation: float 4s ease-in-out 1.5s infinite; }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.3); }
+    }
+    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav class="fixed top-0 left-0 right-0 z-50" style="background: rgba(8,12,20,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05);">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #2563eb, #7c3aed);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <span class="font-bold text-white text-lg tracking-tight">TipFlow</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8 text-sm text-slate-400">
+      <a href="#how-it-works" class="hover:text-white transition-colors">How It Works</a>
+      <a href="#features" class="hover:text-white transition-colors">Features</a>
+      <a href="#tech" class="hover:text-white transition-colors">Technology</a>
+      <a href="#timeline" class="hover:text-white transition-colors">Timeline</a>
+      <a href="#pricing" class="hover:text-white transition-colors">Investment</a>
+    </div>
+    <a href="#pricing" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90" style="background: linear-gradient(135deg, #2563eb, #7c3aed);">
+      Get Started →
+    </a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section class="hero-bg min-h-screen flex flex-col items-center justify-center text-center px-5 pt-24 pb-20">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="badge mb-6">
+      <span class="pulse-dot w-1.5 h-1.5 rounded-full bg-blue-400 inline-block"></span>
+      Digital Tipping · Eastern Europe
+    </div>
+
+    <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-none mb-6">
+      <span class="text-white">Tips go digital.</span><br/>
+      <span class="gradient-text">Staff get paid.</span>
+    </h1>
+
+    <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+      Customers scan a QR code, tap NFC — done. Staff receive tips directly to their bank account via SEPA. No app downloads. No cash. Full business visibility.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+      <a href="#how-it-works" class="px-8 py-4 rounded-xl text-base font-bold text-white glow-blue transition-all hover:opacity-90" style="background: linear-gradient(135deg, #2563eb, #7c3aed);">
+        See How It Works →
+      </a>
+      <a href="#pricing" class="px-8 py-4 rounded-xl text-base font-bold transition-all hover:bg-white/10" style="border: 1px solid rgba(255,255,255,0.12); color: #94a3b8;">
+        View Investment
+      </a>
+    </div>
+
+    <!-- HERO VISUAL — Floating cards -->
+    <div class="relative max-w-3xl mx-auto h-56 hidden md:block">
+      <!-- QR card -->
+      <div class="float-anim absolute left-0 top-4 card-glass rounded-2xl p-5 w-48 text-left glow-blue">
+        <div class="w-10 h-10 rounded-lg bg-blue-600/20 flex items-center justify-center mb-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3z"/><path d="M17 17h4"/><path d="M17 21v-4"/></svg>
+        </div>
+        <div class="text-xs text-slate-400 mb-1">Customer scans QR</div>
+        <div class="text-lg font-bold text-white">€5 tip sent</div>
+        <div class="mt-2 flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-green-400 pulse-dot inline-block"></span>
+          <span class="text-xs text-green-400">Confirmed</span>
+        </div>
+      </div>
+
+      <!-- Currencies -->
+      <div class="float-anim-delay absolute left-1/2 -translate-x-1/2 top-0 card-glass rounded-2xl p-5 w-52 text-left">
+        <div class="text-xs text-slate-400 mb-3 font-medium">Multi-currency</div>
+        <div class="grid grid-cols-3 gap-2">
+          <div class="text-center"><div class="text-base">🇪🇺</div><div class="text-xs font-bold text-white">EUR</div></div>
+          <div class="text-center"><div class="text-base">🇵🇱</div><div class="text-xs font-bold text-white">PLN</div></div>
+          <div class="text-center"><div class="text-base">🇨🇿</div><div class="text-xs font-bold text-white">CZK</div></div>
+          <div class="text-center"><div class="text-base">🇷🇴</div><div class="text-xs font-bold text-white">RON</div></div>
+          <div class="text-center"><div class="text-base">🇭🇺</div><div class="text-xs font-bold text-white">HUF</div></div>
+          <div class="text-center"><div class="text-base">🇧🇬</div><div class="text-xs font-bold text-white">BGN</div></div>
+        </div>
+      </div>
+
+      <!-- Payout card -->
+      <div class="float-anim absolute right-0 top-4 card-glass rounded-2xl p-5 w-48 text-left glow-amber">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center mb-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div class="text-xs text-slate-400 mb-1">SEPA Payout</div>
+        <div class="text-lg font-bold text-white">+€127.50</div>
+        <div class="text-xs text-slate-500 mt-1">Daily · Net of fees</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── HOW IT WORKS ─────────────────────────────────────── -->
+<section id="how-it-works" class="py-24 px-5">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="badge mb-4">How It Works</div>
+      <h2 class="text-3xl md:text-5xl font-black text-white">From scan to bank. <span class="gradient-text">In seconds.</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-0 items-start">
+
+      <!-- Step 1 -->
+      <div class="md:col-span-1 flex flex-col items-center text-center py-6">
+        <div class="relative mb-4 step-line">
+          <div class="timeline-dot">1</div>
+        </div>
+        <div class="w-12 h-12 rounded-xl card-glass flex items-center justify-center mb-3">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3z"/></svg>
+        </div>
+        <div class="text-sm font-semibold text-white mb-1">Scan QR</div>
+        <div class="text-xs text-slate-500">Table, receipt, or NFC badge</div>
+      </div>
+
+      <div class="hidden md:flex items-center justify-center pt-16">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="md:col-span-1 flex flex-col items-center text-center py-6">
+        <div class="relative mb-4 step-line">
+          <div class="timeline-dot">2</div>
+        </div>
+        <div class="w-12 h-12 rounded-xl card-glass flex items-center justify-center mb-3">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        </div>
+        <div class="text-sm font-semibold text-white mb-1">Choose & Pay</div>
+        <div class="text-xs text-slate-500">Card, PayPal, or crypto</div>
+      </div>
+
+      <div class="hidden md:flex items-center justify-center pt-16">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="md:col-span-1 flex flex-col items-center text-center py-6">
+        <div class="relative mb-4">
+          <div class="timeline-dot">3</div>
+        </div>
+        <div class="w-12 h-12 rounded-xl card-glass flex items-center justify-center mb-3">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        </div>
+        <div class="text-sm font-semibold text-white mb-1">Staff Notified</div>
+        <div class="text-xs text-slate-500">Instant push notification</div>
+      </div>
+
+    </div>
+
+    <!-- Payment methods strip -->
+    <div class="mt-16 card-glass rounded-2xl p-8 flex flex-wrap gap-6 items-center justify-center">
+      <span class="text-xs text-slate-500 uppercase tracking-widest font-semibold">Accepted payments</span>
+      <div class="flex flex-wrap gap-4 items-center justify-center">
+        <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><span>💳</span> Visa / Mastercard</div>
+        <div class="w-px h-4 bg-slate-700"></div>
+        <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><span>🅿️</span> PayPal</div>
+        <div class="w-px h-4 bg-slate-700"></div>
+        <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><span>₿</span> Crypto (BTC, ETH, USDC)</div>
+        <div class="w-px h-4 bg-slate-700"></div>
+        <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><span>🏦</span> SEPA Payouts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── FEATURES ─────────────────────────────────────────── -->
+<section id="features" class="py-24 px-5" style="background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(37,99,235,0.08) 0%, transparent 70%);">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="badge mb-4">What Gets Built</div>
+      <h2 class="text-3xl md:text-5xl font-black text-white">Everything the platform needs.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+
+      <!-- QR Tipping -->
+      <div class="card-glass rounded-2xl p-7 hover:border-blue-500/30 transition-all">
+        <div class="w-11 h-11 rounded-xl bg-blue-600/15 flex items-center justify-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">QR Tipping Web App</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Mobile-optimised page per staff member. Preset amounts (€1/€2/€5) or custom. No app install required. Branded confirmation screen.</p>
+      </div>
+
+      <!-- Payment Engine -->
+      <div class="card-glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl bg-violet-600/15 flex items-center justify-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Payment Engine</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Stripe, PayPal SDK, Coinbase Commerce. Webhook-driven, idempotent processing. Multi-currency: EUR, PLN, CZK, RON, HUF, BGN.</p>
+      </div>
+
+      <!-- Staff PWA -->
+      <div class="card-glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl bg-emerald-600/15 flex items-center justify-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Staff PWA</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Progressive Web App: real-time tip feed, balance, payout history, push notifications. Installable from browser — no app store needed.</p>
+      </div>
+
+      <!-- Payout Engine -->
+      <div class="card-glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl bg-amber-600/15 flex items-center justify-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Payout Engine</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">SEPA Instant & Credit Transfer via Stripe Connect. Daily or weekly schedule. Automated reconciliation. Gross/fee/net transparency for every payout.</p>
+      </div>
+
+      <!-- Business Dashboard -->
+      <div class="card-glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl bg-pink-600/15 flex items-center justify-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Business Dashboard</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Venue & staff management, QR generation, tip analytics with date filtering, payout controls. Multi-site support built in.</p>
+      </div>
+
+      <!-- Tip Pooling -->
+      <div class="card-glass rounded-2xl p-7">
+        <div class="w-11 h-11 rounded-xl bg-cyan-600/15 flex items-center justify-center mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4"/><circle cx="17" cy="17" r="4"/><path d="M17 13v4l3 2"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Tip Pooling</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Optional venue-level pooling. Split by equal share or hours worked. Foundation for advanced allocation rules across teams.</p>
+      </div>
+
+    </div>
+
+    <!-- Audit badge -->
+    <div class="mt-8 card-glass rounded-2xl p-6 flex flex-col md:flex-row items-center gap-4">
+      <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(37,99,235,0.15);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <div class="text-sm font-bold text-white mb-0.5">Audit & Compliance Trail</div>
+        <div class="text-sm text-slate-400">Immutable, append-only transaction log for every tip, allocation, and payout. AES-256 encrypted at rest. GDPR-compliant. Designed for future local tax authority integration per jurisdiction.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── TECH STACK ────────────────────────────────────────── -->
+<section id="tech" class="py-24 px-5">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="badge mb-4">Technology</div>
+      <h2 class="text-3xl md:text-5xl font-black text-white">Built for <span class="gradient-text">financial-grade</span> reliability.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5 mb-8">
+
+      <div class="card-glass rounded-2xl p-7">
+        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-5">Stack</h3>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3"><span class="text-lg">⚡</span><span class="text-sm text-white font-medium">Backend</span></div>
+            <span class="text-sm text-slate-400">Node.js (TypeScript) · Fastify</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3"><span class="text-lg">🗄️</span><span class="text-sm text-white font-medium">Database</span></div>
+            <span class="text-sm text-slate-400">PostgreSQL (AWS RDS)</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3"><span class="text-lg">⚛️</span><span class="text-sm text-white font-medium">Frontend</span></div>
+            <span class="text-sm text-slate-400">Next.js (React) · SSR</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3"><span class="text-lg">☁️</span><span class="text-sm text-white font-medium">Infra</span></div>
+            <span class="text-sm text-slate-400">AWS ECS + RDS + Redis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-glass rounded-2xl p-7">
+        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-5">Security</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <span class="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+            <span class="text-sm text-slate-300">AES-256 at rest · TLS 1.3 in transit</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+            <span class="text-sm text-slate-300">PCI compliance inherited via Stripe — no raw card data</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+            <span class="text-sm text-slate-300">Envelope encryption with per-business keys for bank details</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+            <span class="text-sm text-slate-300">OAuth 2.0 / JWT auth · RBAC · Rate limiting</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+            <span class="text-sm text-slate-300">GDPR-compliant data handling</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Integrations row -->
+    <div class="card-glass rounded-2xl p-7">
+      <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Third-Party Integrations</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="text-center p-4 rounded-xl" style="background: rgba(255,255,255,0.03);">
+          <div class="text-2xl mb-2">💳</div>
+          <div class="text-xs font-bold text-white">Stripe</div>
+          <div class="text-xs text-slate-500 mt-1">Cards + Payouts</div>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: rgba(255,255,255,0.03);">
+          <div class="text-2xl mb-2">🅿️</div>
+          <div class="text-xs font-bold text-white">PayPal</div>
+          <div class="text-xs text-slate-500 mt-1">Alt payments</div>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: rgba(255,255,255,0.03);">
+          <div class="text-2xl mb-2">₿</div>
+          <div class="text-xs font-bold text-white">Coinbase</div>
+          <div class="text-xs text-slate-500 mt-1">Crypto</div>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: rgba(255,255,255,0.03);">
+          <div class="text-2xl mb-2">🔔</div>
+          <div class="text-xs font-bold text-white">Firebase</div>
+          <div class="text-xs text-slate-500 mt-1">Push notifications</div>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: rgba(255,255,255,0.03);">
+          <div class="text-2xl mb-2">📧</div>
+          <div class="text-xs font-bold text-white">SendGrid</div>
+          <div class="text-xs text-slate-500 mt-1">Email</div>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: rgba(255,255,255,0.03);">
+          <div class="text-2xl mb-2">🔐</div>
+          <div class="text-xs font-bold text-white">Auth0</div>
+          <div class="text-xs text-slate-500 mt-1">Authentication</div>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: rgba(255,255,255,0.03);">
+          <div class="text-2xl mb-2">🐛</div>
+          <div class="text-xs font-bold text-white">Sentry</div>
+          <div class="text-xs text-slate-500 mt-1">Error tracking</div>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: rgba(255,255,255,0.03);">
+          <div class="text-2xl mb-2">📊</div>
+          <div class="text-xs font-bold text-white">PostHog</div>
+          <div class="text-xs text-slate-500 mt-1">Analytics</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── TIMELINE ──────────────────────────────────────────── -->
+<section id="timeline" class="py-24 px-5" style="background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(124,58,237,0.07) 0%, transparent 70%);">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="badge mb-4">Delivery Plan</div>
+      <h2 class="text-3xl md:text-5xl font-black text-white">Production-ready <span class="gradient-text">in 8 weeks.</span></h2>
+    </div>
+
+    <div class="space-y-5">
+
+      <div class="card-glass rounded-2xl p-7 flex gap-5">
+        <div class="timeline-dot flex-shrink-0 self-start mt-1">1</div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <h3 class="text-base font-bold text-white">Sprint 1 — Weeks 1–2</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: rgba(37,99,235,0.15); color: #93c5fd;">Foundation</span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed mb-3">Project setup, CI/CD, database schema. Auth system. QR code generation. Tipping web page with Stripe checkout. Tip recording. Business dashboard shell.</p>
+          <div class="flex items-center gap-2 text-xs text-blue-400 font-medium">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Demo: scan QR → pay with test card → see in dashboard
+          </div>
+        </div>
+      </div>
+
+      <div class="card-glass rounded-2xl p-7 flex gap-5">
+        <div class="timeline-dot flex-shrink-0 self-start mt-1">2</div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <h3 class="text-base font-bold text-white">Sprint 2 — Weeks 3–4</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: rgba(124,58,237,0.15); color: #c4b5fd;">Payments & Staff</span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed mb-3">PayPal and crypto integration. Staff PWA with real-time tip feed and push notifications. Staff bank detail collection. QR management (print, assign, deactivate).</p>
+          <div class="flex items-center gap-2 text-xs text-violet-400 font-medium">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Demo: tip via 3 methods → staff notified → balance updates live
+          </div>
+        </div>
+      </div>
+
+      <div class="card-glass rounded-2xl p-7 flex gap-5">
+        <div class="timeline-dot flex-shrink-0 self-start mt-1">3</div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <h3 class="text-base font-bold text-white">Sprint 3 — Weeks 5–6</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: rgba(251,191,36,0.12); color: #fcd34d;">Payouts & Analytics</span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed mb-3">Payout engine: Stripe Connect, SEPA Instant & Credit Transfer. Scheduling (daily/weekly). Staff payout history. Full business analytics. Reconciliation. Audit trail.</p>
+          <div class="flex items-center gap-2 text-xs text-amber-400 font-medium">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Demo: full cycle from tip to money in bank
+          </div>
+        </div>
+      </div>
+
+      <div class="card-glass rounded-2xl p-7 flex gap-5">
+        <div class="timeline-dot flex-shrink-0 self-start mt-1">4</div>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <h3 class="text-base font-bold text-white">Sprint 4 — Weeks 7–8</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background: rgba(52,211,153,0.12); color: #6ee7b7;">Production</span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed mb-3">Tip pooling (equal share & hours-based). Customer ratings. Security hardening, pen test. Production deploy. Onboarding docs. Performance tuning.</p>
+          <div class="flex items-center gap-2 text-xs text-emerald-400 font-medium">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Demo: full production-ready platform
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-8 text-center text-sm text-slate-500">
+      Sprint demos every second Friday. Client product owner reviews each demo and provides go/no-go for next sprint.
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── PRICING ───────────────────────────────────────────── -->
+<section id="pricing" class="py-24 px-5">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="badge mb-4">Investment</div>
+      <h2 class="text-3xl md:text-5xl font-black text-white">Fixed price. <span class="amber-text">No surprises.</span></h2>
+    </div>
+
+    <!-- Main price card -->
+    <div class="price-card rounded-3xl p-10 text-center mb-8 glow-blue">
+      <div class="text-sm text-slate-400 uppercase tracking-widest font-semibold mb-2">TipFlow Platform</div>
+      <div class="text-7xl font-black text-white mb-2">$85,000</div>
+      <div class="text-slate-400 mb-8">Fixed price · 8 weeks · Full source code ownership</div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-left mb-8">
+        <div class="rounded-2xl p-5" style="background: rgba(255,255,255,0.04);">
+          <div class="text-xl font-black text-white mb-1">$34,000</div>
+          <div class="text-xs font-bold text-blue-400 mb-2">40% — Kickoff</div>
+          <div class="text-xs text-slate-500">On SOW signed</div>
+        </div>
+        <div class="rounded-2xl p-5" style="background: rgba(255,255,255,0.04);">
+          <div class="text-xl font-black text-white mb-1">$25,500</div>
+          <div class="text-xs font-bold text-violet-400 mb-2">30% — Mid-point</div>
+          <div class="text-xs text-slate-500">Sprint 2 demo sign-off</div>
+        </div>
+        <div class="rounded-2xl p-5" style="background: rgba(255,255,255,0.04);">
+          <div class="text-xl font-black text-white mb-1">$25,500</div>
+          <div class="text-xs font-bold text-emerald-400 mb-2">30% — Go-live</div>
+          <div class="text-xs text-slate-500">Production launch sign-off</div>
+        </div>
+      </div>
+
+      <a href="mailto:hello@metastart.in" class="inline-flex items-center gap-2 px-10 py-4 rounded-xl text-base font-bold text-white transition-all hover:opacity-90" style="background: linear-gradient(135deg, #2563eb, #7c3aed);">
+        Get In Touch →
+      </a>
+    </div>
+
+    <!-- What's included -->
+    <div class="grid md:grid-cols-2 gap-5 mb-8">
+      <div class="card-glass rounded-2xl p-7">
+        <h3 class="text-sm font-bold text-white mb-4">✅ Included</h3>
+        <div class="space-y-2.5">
+          <div class="flex items-start gap-2 text-sm text-slate-300"><span class="text-green-400 flex-shrink-0">✓</span> All design, development, testing & production deploy</div>
+          <div class="flex items-start gap-2 text-sm text-slate-300"><span class="text-green-400 flex-shrink-0">✓</span> CI/CD pipeline, staging & production environments</div>
+          <div class="flex items-start gap-2 text-sm text-slate-300"><span class="text-green-400 flex-shrink-0">✓</span> Bi-weekly sprint demos & weekly status updates</div>
+          <div class="flex items-start gap-2 text-sm text-slate-300"><span class="text-green-400 flex-shrink-0">✓</span> Architecture docs, runbooks & knowledge transfer</div>
+          <div class="flex items-start gap-2 text-sm text-slate-300"><span class="text-green-400 flex-shrink-0">✓</span> 30-day defect warranty post-launch</div>
+          <div class="flex items-start gap-2 text-sm text-slate-300"><span class="text-green-400 flex-shrink-0">✓</span> Full source code delivered to your repository</div>
+        </div>
+      </div>
+
+      <div class="card-glass rounded-2xl p-7">
+        <h3 class="text-sm font-bold text-white mb-4">🏗️ Client Responsibilities</h3>
+        <div class="space-y-2.5">
+          <div class="flex items-start justify-between gap-4">
+            <span class="text-sm text-slate-400">AWS infrastructure</span>
+            <span class="text-sm text-slate-300 font-medium whitespace-nowrap">$12–24k/yr</span>
+          </div>
+          <div class="flex items-start justify-between gap-4">
+            <span class="text-sm text-slate-400">Payment providers (Stripe, PayPal, crypto)</span>
+            <span class="text-sm text-slate-300 font-medium whitespace-nowrap">1.5–3%/txn</span>
+          </div>
+          <div class="flex items-start justify-between gap-4">
+            <span class="text-sm text-slate-400">Domain, SSL, monitoring (Sentry)</span>
+            <span class="text-sm text-slate-300 font-medium whitespace-nowrap">$2–5k/yr</span>
+          </div>
+          <div class="flex items-start justify-between gap-4">
+            <span class="text-sm text-slate-400">Stripe Connect account + onboarding</span>
+            <span class="text-sm text-slate-300 font-medium whitespace-nowrap">Stripe fees</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── WHAT'S NEXT ───────────────────────────────────────── -->
+<section class="py-24 px-5" style="background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(37,99,235,0.08) 0%, transparent 70%);">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <div class="badge mb-4">Roadmap</div>
+      <h2 class="text-3xl md:text-5xl font-black text-white">Built to scale <span class="gradient-text">beyond day one.</span></h2>
+      <p class="text-slate-400 mt-4 max-w-xl mx-auto">The platform is architected for expansion. Each phase is separately scoped — no commitment required until SOW is signed.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card-glass rounded-2xl p-6">
+        <div class="text-2xl mb-3">🖥️</div>
+        <h3 class="font-bold text-white text-sm mb-2">EPOS Integration</h3>
+        <p class="text-xs text-slate-400">iiko, Poster, R-Keeper, Square — tips extracted directly from card terminal transactions.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-6">
+        <div class="text-2xl mb-3">🧾</div>
+        <h3 class="font-bold text-white text-sm mb-2">Tax Compliance Engine</h3>
+        <p class="text-xs text-slate-400">Per-country tax authority integration, automated payroll reporting, local labour law compliance.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-6">
+        <div class="text-2xl mb-3">🌍</div>
+        <h3 class="font-bold text-white text-sm mb-2">Expanded Jurisdictions</h3>
+        <p class="text-xs text-slate-400">Western Europe (UK, Ireland, DACH), Australia, Canada. Native iOS & Android apps.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-6">
+        <div class="text-2xl mb-3">🤖</div>
+        <h3 class="font-bold text-white text-sm mb-2">AI Fairness Scoring</h3>
+        <p class="text-xs text-slate-400">Anomaly detection, demand forecasting, and intelligent tip distribution.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-6">
+        <div class="text-2xl mb-3">💰</div>
+        <h3 class="font-bold text-white text-sm mb-2">Financial Wellbeing</h3>
+        <p class="text-xs text-slate-400">Savings pots, earned wage access — financial tools built for hospitality workers.</p>
+      </div>
+      <div class="card-glass rounded-2xl p-6">
+        <div class="text-2xl mb-3">🏅</div>
+        <h3 class="font-bold text-white text-sm mb-2">SOC 2 & PCI DSS</h3>
+        <p class="text-xs text-slate-400">Enterprise-grade certifications for large venue groups and payroll integrations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ──────────────────────────────────────────────── -->
+<section class="py-24 px-5 text-center">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-black text-white mb-4">Ready to launch <span class="gradient-text">TipFlow?</span></h2>
+    <p class="text-slate-400 mb-8 text-lg">8 weeks. Fixed price. Full ownership. Let's build it.</p>
+    <a href="mailto:hello@metastart.in" class="inline-flex items-center gap-2 px-10 py-4 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 glow-blue" style="background: linear-gradient(135deg, #2563eb, #7c3aed);">
+      Start the Conversation →
+    </a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer class="border-t py-10 px-5 text-center" style="border-color: rgba(255,255,255,0.06);">
+  <div class="flex items-center justify-center gap-2 mb-3">
+    <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background: linear-gradient(135deg, #2563eb, #7c3aed);">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <span class="font-bold text-white">TipFlow</span>
+  </div>
+  <p class="text-xs text-slate-600">Built by <a href="https://metastart.in" class="text-slate-500 hover:text-slate-400">Metastart</a> · Digital Tipping Platform for Eastern Europe</p>
+</footer>
+
+</body>
+</html>
